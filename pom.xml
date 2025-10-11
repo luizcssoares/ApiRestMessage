@@ -14,10 +14,7 @@
 	<name>ApiRestMessage</name>
 	<description>Api Rest Message</description>
 	<properties>
-		<java.version>11</java.version>
-		<sonar.projectkey>ApiRestMessage</sonar.projectkey>
-		<sonar.host.url>http://localhost:9000</sonar.host.url>
-		<sonar.login>sqp_cb59f80931bf006873d9bdc82e6de2af77f370d4</sonar.login>
+		<java.version>17</java.version>		
 	</properties>
 	<dependencies>
 		<dependency>

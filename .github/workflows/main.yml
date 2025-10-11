@@ -9,20 +9,29 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-      - uses: actions/checkout@v3
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Build Spring Boot application
+        run: |
+          ./mvnw clean install     
 
       - name: Docker Login
-        uses: docker/login-action@v2.1.0
+        uses: docker/login-action@v3
         with:
           username: ${{ secrets.USER_DOCKER_HUB }}
           password: ${{ secrets.PWD_DOCKER_HUB }}
 
       - name: Build and push Docker images
-        uses: docker/build-push-action@v3.2.0
+        uses: docker/build-push-action@v5
         with:
           context: .          
           push: true
-          tags: |
-            luizcssoares/apirestmessage:v1
+          tags: |            
             luizcssoares/apirestmessage:latest
